@@ -2,7 +2,13 @@
   "name": "media-queries",
   "version": "0.0.1",
   "description": "Media query calculator",
-  "main": "index.js",
+  "main": "src/index.js",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^22.4.2"
+  }
 }

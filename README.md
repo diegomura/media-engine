@@ -19,5 +19,5 @@ matchMedia(
     height: 100,
     orientation: 'landscape',
   }
-)
+);
 ```
