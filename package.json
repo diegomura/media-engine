@@ -1,0 +1,8 @@
+{
+  "name": "media-queries",
+  "version": "0.0.1",
+  "description": "Media query calculator",
+  "main": "index.js",
+  "author": "Diego Muracciole <diegomuracciole@gmail.com>",
+  "license": "MIT"
+}
