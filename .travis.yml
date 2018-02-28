@@ -5,7 +5,7 @@ node_js:
  - '7'
 
 os:
-  - osx
+  - linux
 
 cache:
   yarn: true
