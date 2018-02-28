@@ -1,9 +1,12 @@
 const Query = require('./queries');
+const Operator = require('./operators');
 
 let NUMBERS = /[0-9]/;
-let LETTERS = /[a-z|\-]/i;
+let LETTERS = /[a-z|\-|@]/i;
 let WHITESPACE = /\s/;
 let COLON = /:/;
+let COMMA = /,/;
+let AND = /and$/;
 
 function tokenizer(input) {
   let current = 0;
@@ -12,27 +15,14 @@ function tokenizer(input) {
   while (current < input.length) {
     let char = input[current];
 
-    if (char === '(') {
-      tokens.push({
-        type: 'paren',
-        value: '(',
-      });
-
+    if (WHITESPACE.test(char) || char === ')' || char === '(') {
       current++;
       continue;
     }
 
-    if (char === ')') {
-      tokens.push({
-        type: 'paren',
-        value: ')',
-      });
+    if (COLON.test(char) || COMMA.test(char)) {
       current++;
-      continue;
-    }
-
-    if (WHITESPACE.test(char) || COLON.test(char)) {
-      current++;
+      tokens.push({ type: 'operator', value: char });
       continue;
     }
 
@@ -49,12 +39,16 @@ function tokenizer(input) {
 
     if (LETTERS.test(char)) {
       let value = '';
-      while (LETTERS.test(char)) {
+      while (LETTERS.test(char) && char !== undefined) {
         value += char;
         char = input[++current];
       }
+      if (AND.test(value)) {
+        tokens.push({ type: 'operator', value });
+      } else {
+        tokens.push({ type: 'literal', value });
+      }
 
-      tokens.push({ type: 'name', value });
       continue;
     }
 
@@ -65,22 +59,59 @@ function tokenizer(input) {
 }
 
 function parser(tokens) {
-  let current = 0;
+  let output = [];
+  let stack = [];
+
+  while (tokens.length > 0) {
+    let token = tokens.shift();
+
+    if (token.type === 'number' || token.type === 'literal') {
+      output.push(token);
+      continue;
+    }
+
+    if (token.type === 'operator') {
+      if (COLON.test(token.value)) {
+        token = { type: 'query', key: output.pop(), value: tokens.shift() };
+        output.push(token);
+        continue;
+      }
+
+      while (stack.length > 0) {
+        output.unshift(stack.pop());
+      }
+      stack.push(token);
+    }
+  }
+
+  while (stack.length > 0) {
+    output.unshift(stack.pop());
+  }
 
   function walk() {
-    let token = tokens[current];
+    const head = output.shift();
 
-    if (token.type === 'number') {
-      current++;
-      return parseInt(token.value);
+    if (head.type === 'number') {
+      return parseInt(head.value);
     }
 
-    if (token.type === 'name') {
-      current++;
-      return Query(token.value, walk());
+    if (head.type === 'literal') {
+      return head.value;
     }
 
-    throw new TypeError(token.type);
+    if (head.type === 'operator') {
+      const l = walk();
+      const r = walk();
+
+      return Operator(head.value, l, r);
+    }
+
+    if (head.type === 'query') {
+      const l = head.key.value;
+      const r = head.value.value;
+
+      return Query(l, r);
+    }
   }
 
   return walk();
