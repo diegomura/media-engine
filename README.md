@@ -1,4 +1,7 @@
 # media queries
+[![npm](https://img.shields.io/npm/v/media-queries.svg)](https://npm.im/media-queries)
+[![Travis](https://img.shields.io/travis/diegomura/media-queriesn.svg)](https://travis-ci.org/diegomura/media-queries)
+[![license](https://img.shields.io/npm/l/media-queries.svg)](./LICENSE)
 > Media queries engine written in pure JS!
 
 ## API
