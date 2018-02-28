@@ -1,41 +1,41 @@
-function MaxHeight (value) {
+function MaxHeight(value) {
   this.value = value;
 
   this.match = function(options) {
     return this.value >= options.height;
-  }
+  };
 }
 
-function MinHeight (value) {
+function MinHeight(value) {
   this.value = value;
 
   this.match = function(options) {
     return this.value < options.height;
-  }
+  };
 }
 
-function MaxWidth (value) {
+function MaxWidth(value) {
   this.value = value;
 
   this.match = function(options) {
     return this.value >= options.width;
-  }
+  };
 }
 
-function MinWidth (value) {
+function MinWidth(value) {
   this.value = value;
 
   this.match = function(options) {
     return this.value < options.width;
-  }
+  };
 }
 
-function Orientation (value) {
+function Orientation(value) {
   this.value = value;
 
   this.match = function(options) {
     return this.value === options.orientation;
-  }
+  };
 }
 
 module.exports = function Query(type, value) {
@@ -53,4 +53,4 @@ module.exports = function Query(type, value) {
     default:
       throw new Error(value);
   }
-}
+};

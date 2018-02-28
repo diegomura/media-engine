@@ -52,7 +52,9 @@ function tokenizer(input) {
       continue;
     }
 
-    throw new TypeError('Tokenizer: I dont know what this character is: ' + char);
+    throw new TypeError(
+      'Tokenizer: I dont know what this character is: ' + char,
+    );
   }
 
   return tokens;
@@ -122,5 +124,5 @@ module.exports = {
     const tokens = tokenizer(query);
     const ast = parser(tokens);
     return ast;
-  }
+  },
 };

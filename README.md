@@ -1,4 +1,5 @@
 # media queries
+> Media queries engine written in pure JS!
 
 ## API
 ```js
