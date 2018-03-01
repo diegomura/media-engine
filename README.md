@@ -1,4 +1,4 @@
-# media engine
+# media-engine
 > Media queries engine written in pure JS!
 
 [![npm](https://img.shields.io/npm/v/media-engine.svg)](https://npm.im/media-engine)
