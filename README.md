@@ -17,7 +17,7 @@ yarn add media-engine
 ```js
 matchMedia(
   {
-    'min-height: 700': {
+    '@media min-height: 700': {
       color: 'green',
     },
   },
@@ -27,7 +27,7 @@ matchMedia(
 
 matchMedia(
   {
-    'min-height: 700': {
+    '@media min-height: 700': {
       color: 'green',
     },
   },
@@ -40,7 +40,7 @@ matchMedia(
 ```js
 matchMedia(
   {
-    'max-height: 700': {
+    '@media max-height: 700': {
       color: 'green',
     },
   },
@@ -50,7 +50,7 @@ matchMedia(
 
 matchMedia(
   {
-    'max-height: 700': {
+    '@media max-height: 700': {
       color: 'green',
     },
   },
@@ -63,7 +63,7 @@ matchMedia(
 ```js
 matchMedia(
   {
-    'min-width: 700': {
+    '@media min-width: 700': {
       color: 'green',
     },
   },
@@ -73,7 +73,7 @@ matchMedia(
 
 matchMedia(
   {
-    'min-width: 700': {
+    '@media min-width: 700': {
       color: 'green',
     },
   },
@@ -86,7 +86,7 @@ matchMedia(
 ```js
 matchMedia(
   {
-    'max-width: 700': {
+    '@media max-width: 700': {
       color: 'green',
     },
   },
@@ -96,7 +96,7 @@ matchMedia(
 
 matchMedia(
   {
-    'max-width: 700': {
+    '@media max-width: 700': {
       color: 'green',
     },
   },
@@ -109,7 +109,7 @@ matchMedia(
 ```js
 matchMedia(
   {
-    'orientation: landscape': {
+    '@media orientation: landscape': {
       color: 'green',
     },
   },
@@ -119,7 +119,7 @@ matchMedia(
 
 matchMedia(
   {
-    'orientation: landscape': {
+    '@media orientation: landscape': {
       color: 'green',
     },
   },
@@ -132,7 +132,7 @@ matchMedia(
 ```js
 matchMedia(
   {
-    '(min-width: 700) and (orientation: landscape)': {
+    '@media (min-width: 700) and (orientation: landscape)': {
       color: 'green',
     },
   },
@@ -145,7 +145,7 @@ matchMedia(
 ```js
 matchMedia(
   {
-    '(min-width: 700), (orientation: landscape)': {
+    '@media (min-width: 700), (orientation: landscape)': {
       color: 'green',
     },
   },
@@ -158,10 +158,10 @@ matchMedia(
 ```js
 matchMedia(
   {
-    'orientation: landscape': {
+    '@media orientation: landscape': {
       color: 'green',
     },
-    'min-width: 700': {
+    '@media min-width: 700': {
       background: 'red',
     }
   },

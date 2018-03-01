@@ -2,7 +2,7 @@ const matchMedia = require('../src');
 
 test('Should match max-height if valid', () => {
   const result = matchMedia(
-    { 'max-height: 700': { color: 'green' }},
+    { '@media max-height: 700': { color: 'green' } },
     { height: 100 },
   );
 
@@ -11,7 +11,7 @@ test('Should match max-height if valid', () => {
 
 test('Should not match max-height if invalid', () => {
   const result = matchMedia(
-    { 'max-height: 700': { color: 'green' }},
+    { '@media max-height: 700': { color: 'green' } },
     { height: 800 },
   );
 
@@ -20,7 +20,7 @@ test('Should not match max-height if invalid', () => {
 
 test('Should match min-height if valid', () => {
   const result = matchMedia(
-    { 'min-height: 700': { color: 'green' }},
+    { '@media min-height: 700': { color: 'green' } },
     { height: 800 },
   );
 
@@ -29,7 +29,7 @@ test('Should match min-height if valid', () => {
 
 test('Should not match min-height if invalid', () => {
   const result = matchMedia(
-    { 'min-height: 700': { color: 'green' }},
+    { '@media min-height: 700': { color: 'green' } },
     { height: 100 },
   );
 
@@ -38,7 +38,7 @@ test('Should not match min-height if invalid', () => {
 
 test('Should match max-width if valid', () => {
   const result = matchMedia(
-    { 'max-width: 700': { color: 'green' }},
+    { '@media max-width: 700': { color: 'green' } },
     { width: 100 },
   );
 
@@ -47,7 +47,7 @@ test('Should match max-width if valid', () => {
 
 test('Should not match max-width if invalid', () => {
   const result = matchMedia(
-    { 'max-width: 700': { color: 'green' }},
+    { '@media max-width: 700': { color: 'green' } },
     { width: 800 },
   );
 
@@ -56,7 +56,7 @@ test('Should not match max-width if invalid', () => {
 
 test('Should match min-width if valid', () => {
   const result = matchMedia(
-    { 'min-width: 700': { color: 'green' }},
+    { '@media min-width: 700': { color: 'green' } },
     { width: 800 },
   );
 
@@ -65,7 +65,7 @@ test('Should match min-width if valid', () => {
 
 test('Should not match min-width if invalid', () => {
   const result = matchMedia(
-    { 'min-width: 700': { color: 'green' }},
+    { '@media min-width: 700': { color: 'green' } },
     { width: 100 },
   );
 
@@ -74,7 +74,7 @@ test('Should not match min-width if invalid', () => {
 
 test('Should match orientation if valid', () => {
   const result = matchMedia(
-    { 'orientation: landscape': { color: 'green' }},
+    { '@media orientation: landscape': { color: 'green' } },
     { orientation: 'landscape' },
   );
 
@@ -83,7 +83,7 @@ test('Should match orientation if valid', () => {
 
 test('Should not match orientation if invalid', () => {
   const result = matchMedia(
-    { 'orientation: landscape': { color: 'green' }},
+    { '@media orientation: landscape': { color: 'green' } },
     { orientation: 'portrait' },
   );
 
@@ -92,7 +92,11 @@ test('Should not match orientation if invalid', () => {
 
 test('Should match and operator if valid', () => {
   const result = matchMedia(
-    { '(max-height: 700) and (orientation: landscape)': { color: 'green' }},
+    {
+      '@media (max-height: 700) and (orientation: landscape)': {
+        color: 'green',
+      },
+    },
     { height: 100, orientation: 'landscape' },
   );
 
@@ -101,7 +105,11 @@ test('Should match and operator if valid', () => {
 
 test('Should not match and operator if invalid', () => {
   const result = matchMedia(
-    { '(max-height: 700) and (orientation: landscape)': { color: 'green' }},
+    {
+      '@media (max-height: 700) and (orientation: landscape)': {
+        color: 'green',
+      },
+    },
     { height: 800, orientation: 'landscape' },
   );
 
@@ -110,7 +118,9 @@ test('Should not match and operator if invalid', () => {
 
 test('Should match or operator if valid', () => {
   const result = matchMedia(
-    { '(max-height: 700), (orientation: landscape)': { color: 'green' }},
+    {
+      '@media (max-height: 700), (orientation: landscape)': { color: 'green' },
+    },
     { orientation: 'landscape' },
   );
 
@@ -119,7 +129,9 @@ test('Should match or operator if valid', () => {
 
 test('Should not match or operator if invalid', () => {
   const result = matchMedia(
-    { '(max-height: 700), (orientation: landscape)': { color: 'green' }},
+    {
+      '@media (max-height: 700), (orientation: landscape)': { color: 'green' },
+    },
     { orientation: 'portrait', height: 800 },
   );
 
@@ -129,9 +141,9 @@ test('Should not match or operator if invalid', () => {
 test('Should match several queries', () => {
   const result = matchMedia(
     {
-      'min-height: 700': { cursor: 'pointer' },
-      'max-height: 700': { color: 'green' },
-      'orientation: landscape': { background: 'red' },
+      '@media min-height: 700': { cursor: 'pointer' },
+      '@media max-height: 700': { color: 'green' },
+      '@media orientation: landscape': { background: 'red' },
     },
     { height: 100, orientation: 'landscape' },
   );

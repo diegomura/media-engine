@@ -2,11 +2,12 @@ const Query = require('./queries');
 const Operator = require('./operators');
 
 let NUMBERS = /[0-9]/;
-let LETTERS = /[a-z|\-|@]/i;
+let LETTERS = /[a-z|\-]/i;
 let WHITESPACE = /\s/;
 let COLON = /:/;
 let COMMA = /,/;
 let AND = /and$/;
+let AT = /@/;
 
 function tokenizer(input) {
   let current = 0;
@@ -14,6 +15,13 @@ function tokenizer(input) {
 
   while (current < input.length) {
     let char = input[current];
+
+    if (AT.test(char)) {
+      char = input[++current];
+      while (LETTERS.test(char) && char !== undefined) {
+        char = input[++current];
+      }
+    }
 
     if (WHITESPACE.test(char) || char === ')' || char === '(') {
       current++;
