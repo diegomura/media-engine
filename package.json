@@ -1,5 +1,5 @@
 {
-  "name": "media-queries",
+  "name": "media-engine",
   "version": "0.0.1",
   "description": "Media query calculator",
   "main": "src/index.js",
