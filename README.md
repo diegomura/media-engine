@@ -1,9 +1,16 @@
-# media queries
+# media engine
 > Media queries engine written in pure JS!
 
-[![npm](https://img.shields.io/npm/v/media-queries.svg)](https://npm.im/media-queries)
-[![Travis](https://img.shields.io/travis/diegomura/media-queries.svg)](https://travis-ci.org/diegomura/media-queries)
-[![license](https://img.shields.io/npm/l/media-queries.svg)](./LICENSE)
+[![npm](https://img.shields.io/npm/v/media-engine.svg)](https://npm.im/media-engine)
+[![Travis](https://img.shields.io/travis/diegomura/media-engine.svg)](https://travis-ci.org/diegomura/media-engine)
+[![license](https://img.shields.io/npm/l/media-engine.svg)](./LICENSE)
+
+## Install
+```sh
+npm install media-engine --save
+# or
+yarn add media-engine
+```
 
 ## API
 `min-height`
