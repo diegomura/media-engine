@@ -169,3 +169,6 @@ matchMedia(
 );
 // { color: 'green', background: 'red' }
 ```
+
+## License
+MIT © [Diego Muracciole](http://github.com/diegomura)
