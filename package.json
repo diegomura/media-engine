@@ -1,6 +1,6 @@
 {
   "name": "media-engine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Media query calculator",
   "main": "src/index.js",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",
