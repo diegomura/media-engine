@@ -1,20 +1,20 @@
-const Query = require('./queries');
-const Operator = require('./operators');
+var Query = require('./queries');
+var Operator = require('./operators');
 
-let NUMBERS = /[0-9]/;
-let LETTERS = /[a-z|\-]/i;
-let WHITESPACE = /\s/;
-let COLON = /:/;
-let COMMA = /,/;
-let AND = /and$/;
-let AT = /@/;
+var NUMBERS = /[0-9]/;
+var LETTERS = /[a-z|\-]/i;
+var WHITESPACE = /\s/;
+var COLON = /:/;
+var COMMA = /,/;
+var AND = /and$/;
+var AT = /@/;
 
 function tokenizer(input) {
-  let current = 0;
-  let tokens = [];
+  var current = 0;
+  var tokens = [];
 
   while (current < input.length) {
-    let char = input[current];
+    var char = input[current];
 
     if (AT.test(char)) {
       char = input[++current];
@@ -35,7 +35,7 @@ function tokenizer(input) {
     }
 
     if (NUMBERS.test(char)) {
-      let value = '';
+      var value = '';
       while (NUMBERS.test(char)) {
         value += char;
         char = input[++current];
@@ -46,7 +46,7 @@ function tokenizer(input) {
     }
 
     if (LETTERS.test(char)) {
-      let value = '';
+      var value = '';
       while (LETTERS.test(char) && char !== undefined) {
         value += char;
         char = input[++current];
@@ -69,11 +69,11 @@ function tokenizer(input) {
 }
 
 function parser(tokens) {
-  let output = [];
-  let stack = [];
+  var output = [];
+  var stack = [];
 
   while (tokens.length > 0) {
-    let token = tokens.shift();
+    var token = tokens.shift();
 
     if (token.type === 'number' || token.type === 'literal') {
       output.push(token);
@@ -99,7 +99,7 @@ function parser(tokens) {
   }
 
   function walk() {
-    const head = output.shift();
+    var head = output.shift();
 
     if (head.type === 'number') {
       return parseInt(head.value);
@@ -110,15 +110,15 @@ function parser(tokens) {
     }
 
     if (head.type === 'operator') {
-      const l = walk();
-      const r = walk();
+      var l = walk();
+      var r = walk();
 
       return Operator(head.value, l, r);
     }
 
     if (head.type === 'query') {
-      const l = head.key.value;
-      const r = head.value.value;
+      var l = head.key.value;
+      var r = head.value.value;
 
       return Query(l, r);
     }
@@ -129,8 +129,8 @@ function parser(tokens) {
 
 module.exports = {
   parse: function(query) {
-    const tokens = tokenizer(query);
-    const ast = parser(tokens);
+    var tokens = tokenizer(query);
+    var ast = parser(tokens);
     return ast;
   }
 };

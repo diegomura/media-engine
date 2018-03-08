@@ -1,7 +1,7 @@
-const Parser = require('./parser');
+var Parser = require('./parser');
 
 module.exports = function(queries, options) {
-  let result = {};
+  var result = {};
 
   Object.keys(queries).forEach(function(query) {
     if (Parser.parse(query).match(options)) {
