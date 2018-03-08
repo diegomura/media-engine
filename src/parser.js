@@ -41,7 +41,7 @@ function tokenizer(input) {
         char = input[++current];
       }
 
-      tokens.push({ type: 'number', value });
+      tokens.push({ type: 'number', value: value });
       continue;
     }
 
@@ -52,9 +52,9 @@ function tokenizer(input) {
         char = input[++current];
       }
       if (AND.test(value)) {
-        tokens.push({ type: 'operator', value });
+        tokens.push({ type: 'operator', value: value });
       } else {
-        tokens.push({ type: 'literal', value });
+        tokens.push({ type: 'literal', value: value });
       }
 
       continue;
