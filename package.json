@@ -5,6 +5,10 @@
   "main": "src/index.js",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diegomura/media-engine.git"
+  },
   "scripts": {
     "test": "jest",
     "precommit": "lint-staged"
