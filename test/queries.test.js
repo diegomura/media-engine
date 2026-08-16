@@ -1,4 +1,4 @@
-const matchMedia = require('../src');
+const matchMedia = require('../dist');
 
 test('Should match max-height if valid', () => {
   const result = matchMedia(
