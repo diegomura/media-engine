@@ -1,6 +1,6 @@
 {
   "name": "media-engine",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Media query calculator",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
