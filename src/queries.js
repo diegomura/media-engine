@@ -10,7 +10,7 @@ function MinHeight(value) {
   this.value = value;
 
   this.match = function(options) {
-    return this.value < options.height;
+    return this.value <= options.height;
   };
 }
 
@@ -26,7 +26,7 @@ function MinWidth(value) {
   this.value = value;
 
   this.match = function(options) {
-    return this.value < options.width;
+    return this.value <= options.width;
   };
 }
 

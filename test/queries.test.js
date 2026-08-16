@@ -72,6 +72,24 @@ test('Should not match min-width if invalid', () => {
   expect(result).toEqual({});
 });
 
+test('Should match min-width at exact boundary', () => {
+  const result = matchMedia(
+    { '@media min-width: 700': { color: 'green' } },
+    { width: 700 },
+  );
+
+  expect(result).toEqual({ color: 'green' });
+});
+
+test('Should match min-height at exact boundary', () => {
+  const result = matchMedia(
+    { '@media min-height: 700': { color: 'green' } },
+    { height: 700 },
+  );
+
+  expect(result).toEqual({ color: 'green' });
+});
+
 test('Should match orientation if valid', () => {
   const result = matchMedia(
     { '@media orientation: landscape': { color: 'green' } },
