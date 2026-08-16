@@ -127,10 +127,13 @@ function parser(tokens) {
   return walk();
 }
 
+var cache = {};
+
 module.exports = {
   parse: function(query) {
-    var tokens = tokenizer(query);
-    var ast = parser(tokens);
-    return ast;
+    if (!cache[query]) {
+      cache[query] = parser(tokenizer(query));
+    }
+    return cache[query];
   }
 };

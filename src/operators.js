@@ -23,6 +23,6 @@ module.exports = function Operator(type, left, right) {
     case ',':
       return new Or(left, right);
     default:
-      throw new Error(value);
+      throw new Error(type);
   }
 };
